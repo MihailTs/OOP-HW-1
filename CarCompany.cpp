@@ -31,24 +31,17 @@ void CarCompany::addCar(const Car& c){
 void CarCompany::removeCarByID(int ID){
     for(int i = 0; i < carCount; i++)
         if(cars[i].getID() == ID){
-            //ако това не е ID на последната кола - разменяме последната и тази
-            if(i != carCount-1){
-                cars[i] = cars[carCount-1];
-            }
-            //ако е последната просто намаляме броя коли
-            //това се ползва и в другия случай
+            //разменяме последната и тази
+            cars[i] = cars[carCount-1];
             carCount--;
-        }
+    }
 }
 
 void CarCompany::removeClient(int IDNumber){
     for(int i = 0; i < carCount; i++)
         if(clients[i].getID() == IDNumber){
-            //ако това не е ID на последния човек - разменяме последнатя и този
-            if(i != clientCount-1){
-                clients[i] = clients[clientCount-1];
-            }
-            //ако е последната просто намаляме броя клиенти
+            //разменяме последнатя и този
+            clients[i] = clients[clientCount-1];
             clientCount--;
-        }
+    }
 }

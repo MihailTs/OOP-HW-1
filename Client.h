@@ -6,11 +6,30 @@ class Client{
     private:
         char* name;
         char* IDNumber;
-        int money;
-        Position pos;
+        double money;
+        Position position;
+
+        void setName(char*);
+
+        void setID(char*);
+
+        void setMoney(double);
+
+        void setPosition(Position);
 
     public:
 
-        int getID();
+        char* getName() const;
 
+        char* getIDNumber() const;
+
+        double getMoney() const;
+
+        Position getPosition() const;
+
+        void rent(int, Car*);
+
+        double findDistance(int, Car*);
+
+        Client& operator=(const Client&);
 };

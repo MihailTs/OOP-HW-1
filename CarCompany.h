@@ -22,4 +22,6 @@ class CarCompany{
 
         void removeClient(int);
 
+        Client& operator=(const Client&);
+
 };
