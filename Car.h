@@ -36,4 +36,5 @@ class Car{
         //operator=
         Car& operator=(const Car&);
 
+        friend class Client;
 };

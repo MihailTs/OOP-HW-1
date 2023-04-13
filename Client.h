@@ -1,5 +1,6 @@
 #pragma once
 #include "Position.h"
+#include "Car.h"
 
 class Client{
 
@@ -27,9 +28,11 @@ class Client{
 
         Position getPosition() const;
 
-        void rent(int, Car*);
+        bool rent(int, Car*, int);
 
-        double findDistance(int, Car*);
+        double findDistance(int, Car*, int);
 
         Client& operator=(const Client&);
+
+        friend class Car;
 };

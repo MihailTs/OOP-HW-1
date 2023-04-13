@@ -4,7 +4,6 @@ Car* CarCompany::getCars(){
     return cars;
 }
 
-
 void CarCompany::addCar(const Car& c){
     //проверка дали колата е вече в списъка
     for(int i = 0; i < carCount; i++)
