@@ -5,11 +5,11 @@ class Car{
 
     private:
         int ID;
-        //стандартен за България номер от 8 символа
+        //стандартен за България регистрационен номер от 8 символа
         char* number = new char[9];
         double rentSum;
         Position position;
-        bool rented;
+        bool rented = false;
 
         void setID(int);
 
@@ -23,6 +23,12 @@ class Car{
 
     public:
 
+        Car(int, char*, double, Position);
+
+        Car();
+
+        Car(const Car&);
+
         int getID() const;
 
         char* getNumber() const;
@@ -35,6 +41,8 @@ class Car{
 
         //operator=
         Car& operator=(const Car&);
+
+        ~Car();
 
         friend class Client;
 };

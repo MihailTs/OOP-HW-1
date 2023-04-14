@@ -1,6 +1,29 @@
 #include "Car.h"
 #include <cstring>
 
+Car::Car(int _ID, char* _number, double _rentSum, Position _position){
+    setID(_ID);
+    setNumber(_number);
+    setRentSum(_rentSum);
+    setPosition(_position);
+}
+
+Car::Car(){
+    ID = 0;
+    number[0] = '\0';
+    rentSum = 0;
+    position.x = 0;
+    position.y = 0;
+}
+
+Car::Car(const Car& c){
+    setID(c.getID());
+    setNumber(c.getNumber());
+    setRentSum(c.getRentSum());
+    setPosition(c.getPosition());
+    setRented(c.isRented());
+}
+
 void Car::setID(int newID){
     ID = newID;
 }
@@ -43,10 +66,16 @@ bool Car::isRented() const{
 }
 
 Car& Car::operator=(const Car& c){
+    if(this == &c) return *this;
+
     setID(c.getID());
     setNumber(c.getNumber());
     setRentSum(c.getRentSum());
     setPosition(c.getPosition());
     setRented(c.isRented());
     return *this;
+}
+
+Car::~Car(){
+    delete []getNumber();
 }

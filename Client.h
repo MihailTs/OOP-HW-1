@@ -6,23 +6,29 @@ class Client{
 
     private:
         char* name;
-        char* IDNumber;
+        int IDNumber;
         double money;
         Position position;
 
         void setName(char*);
 
-        void setID(char*);
+        void setID(int);
 
         void setMoney(double);
 
         void setPosition(Position);
 
     public:
+        
+        Client(char*, int, double, Position);
+
+        Client();
+
+        Client(const Client&);
 
         char* getName() const;
 
-        char* getIDNumber() const;
+        int getID() const;
 
         double getMoney() const;
 
@@ -34,5 +40,5 @@ class Client{
 
         Client& operator=(const Client&);
 
-        friend class Car;
+        ~Client();
 };
