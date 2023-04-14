@@ -39,7 +39,7 @@ void Client::setID(int newID){
 }
 
 void Client::setMoney(double m){
-    money = m;
+    if(m >= 0) money = m;
 }
 
 void Client::setPosition(Position p){
