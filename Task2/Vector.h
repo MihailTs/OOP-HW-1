@@ -31,6 +31,15 @@ class Vector{
             capacity = 1;
         }
 
+        Vector(const Vector& v){
+            elements = new T[1];
+            setSize(v.getSize());
+            setCapacity(v.getCapacity());
+
+            for(int i = 0; i < getSize(); i++)
+                push(v[i]);
+        }
+
         T* getElements() const{
             return elements;
         }
@@ -115,6 +124,20 @@ class Vector{
             for(int i = start; i <= end; i++)
                 v.push(getElements()[i]);
             return v;
+        }
+
+        Vector& operator=(const Vector& v){
+            if(this == &v) return *this;
+
+            remove(0, getSize()-1);
+
+            setSize(v.getSize());
+            setCapacity(v.getCapacity());
+
+            for(int i = 0; i < getSize(); i++)
+                push(v[i]);
+
+            return *this;
         }
 
         ~Vector(){
