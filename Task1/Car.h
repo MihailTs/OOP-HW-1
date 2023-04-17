@@ -25,6 +25,8 @@ class Car{
 
         Car(int, char*, double, Position);
 
+        Car(int, char*, double, int, int);
+
         Car();
 
         Car(const Car&);

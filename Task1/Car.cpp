@@ -2,10 +2,21 @@
 #include <cstring>
 
 Car::Car(int _ID, char* _number, double _rentSum, Position _position){
+    if(_ID == 0) throw "ID can't be 0";
     setID(_ID);
     setNumber(_number);
     setRentSum(_rentSum);
     setPosition(_position);
+}
+
+Car::Car(int _ID, char* _number, double _rentSum, int x, int y){
+    if(_ID == 0) throw "ID can't be 0";
+    setID(_ID);
+    setNumber(_number);
+    setRentSum(_rentSum);
+    Position p;
+    p.x = x; p.y = y;
+    setPosition(p);
 }
 
 Car::Car(){
@@ -25,6 +36,7 @@ Car::Car(const Car& c){
 }
 
 void Car::setID(int newID){
+    if(newID == 0) throw "ID can't be 0";
     ID = newID;
 }
 

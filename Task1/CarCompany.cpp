@@ -122,6 +122,28 @@ void CarCompany::removeClient(int IDNumber){
     }
 }
 
+int CarCompany::findClient(int IDNumber){
+    for(int i = 0; i < getClientCount(); i++)
+        if(getClients()[i].getID() == IDNumber) return i;
+    return -1;
+}
+
+int CarCompany::findCar(int ID){
+    for(int i = 0; i < getCarCount(); i++)
+        if(getCars()[i].getID() == ID) return i;
+    return -1;
+}
+
+double CarCompany::findDistenceOfClientFromCar(int clientID, int carID){
+    if(findClient(clientID) == -1 || findCar(carID) == -1) throw "Invalid ID numbers";
+    return getClients()[findClient(clientID)].findDistanceFrom(carID, getCars(), getCarCount());
+}
+
+void CarCompany::rentCar(int clientID, int carID){
+    if(findClient(clientID) == -1 || findCar(carID) == -1) throw "Invalid ID numbers";
+    getClients()[findClient(clientID)].rent(carID, getCars(), getCarCount());
+}
+
 CarCompany::~CarCompany(){
     delete []clients;
     delete []cars;

@@ -13,7 +13,8 @@ Client::Client(){
 }
 
 Client::Client(char* _name, int _IDNumber, double _money, Position _position){
-    name = new char[strlen(name)+1];
+    if(_IDNumber == 0) throw "ID can't be 0";
+    name = new char[strlen(_name)+1];
     strcpy(name, _name);
     setID(_IDNumber);
     setMoney(_money);
@@ -35,6 +36,7 @@ void Client::setName(char* newName){
 }
 
 void Client::setID(int newID){
+    if(newID == 0) throw "ID can't be 0";
     IDNumber = newID;
 }
 
@@ -84,7 +86,7 @@ bool Client::rent(int carID, Car* cars, int carCnt){
     return 0;
 }
 
-double Client::findDistance(int carID, Car* cars, int carCnt){
+double Client::findDistanceFrom(int carID, Car* cars, int carCnt){
     for(int i = 0; i < carCnt; i++){
         if(cars[i].getID() == carID){
             return abs(cars[i].getPosition().x - getPosition().x)

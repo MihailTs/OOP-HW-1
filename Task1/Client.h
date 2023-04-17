@@ -36,7 +36,7 @@ class Client{
 
         bool rent(int, Car*, int);
 
-        double findDistance(int, Car*, int);
+        double findDistanceFrom(int, Car*, int);
 
         Client& operator=(const Client&);
 

@@ -46,6 +46,14 @@ class CarCompany{
 
         void removeClient(int);
 
+        int findClient(int);
+
+        int findCar(int);
+
+        double findDistenceOfClientFromCar(int, int);
+
+        void rentCar(int, int);
+
         //няма оператор =, защото се предполага,
         //че ще има само една компания        
 
