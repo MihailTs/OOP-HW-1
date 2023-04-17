@@ -67,7 +67,7 @@ void Store::sell(char* name){
     throw "No such item";
 }
 
-void Store::add(Item it){
+void Store::add(const Item& it){
     if(getItemsCount() >= getItemsCapacity()){
             Item* newElements = new Item[getItemsCount() + 10];
 
@@ -83,8 +83,20 @@ void Store::add(Item it){
         setItemsCount(getItemsCount()+1);
 }
 
-// Store Store::operator+(const Store& store){
-// }
+
+//operator<<
+
+
+Store Store::operator+(const Store& store){
+    Store s;
+    for(int i = 0; i < getItemsCount(); i++)
+        s.add(getItems()[i]);
+
+    for(int i = 0; i < store.getItemsCount(); i++)
+        s.add(store.getItems()[i]);
+    
+    return s;
+}
 
 Store::~Store(){
     delete []items;

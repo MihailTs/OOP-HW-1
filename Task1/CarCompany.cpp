@@ -1,5 +1,14 @@
 #include "CarCompany.h"
 
+/*Интерпретация на задачата*/
+/*
+Обект CarCompany пази и обработва
+информацията за всички коли и клиенти
+всички функционалности се изпълняват централно
+от този обект.
+*/
+
+
 void CarCompany::setClientCount(unsigned cnt){
     clientCount = cnt;
 }

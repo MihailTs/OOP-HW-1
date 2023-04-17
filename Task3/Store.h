@@ -34,7 +34,7 @@ class Store{
 
         bool checkAvailability(char*);
 
-        void add(Item);
+        void add(const Item&);
 
         Store operator+(const Store&);
 
