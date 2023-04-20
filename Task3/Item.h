@@ -1,4 +1,5 @@
 #pragma once
+#include <ostream>
 
 class Item{
 
@@ -23,6 +24,8 @@ class Item{
         unsigned getCount() const;
 
         Item& operator=(const Item&);
+
+        friend std::ostream& operator<<(std::ostream&, const Item&);
 
         ~Item();
 

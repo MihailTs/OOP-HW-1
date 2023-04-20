@@ -141,7 +141,7 @@ class Vector{
         }
 
         ~Vector(){
-            delete []elements;
+            delete []getElements();
         }
 
 };

@@ -18,9 +18,11 @@ class Store{
 
         void swapItems(unsigned, unsigned);
 
-    private:
+    public:
 
         Store();
+
+        Store(const Store&);
 
         unsigned getItemsCount() const;
 
@@ -38,7 +40,9 @@ class Store{
 
         Store operator+(const Store&);
 
-        friend std::ostream& operator<<(std::ostream&, const Item&);
+        Store& operator=(const Store&);
+
+        friend std::ostream& operator<<(std::ostream&, const Store&);
 
         ~Store();
 };

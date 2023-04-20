@@ -20,6 +20,8 @@ class CarCompany{
 
         void setCarsCapacity(unsigned);
 
+        void copy(const CarCompany&);
+
     public:
 
         CarCompany();
@@ -54,8 +56,7 @@ class CarCompany{
 
         void rentCar(int, int);
 
-        //няма оператор =, защото се предполага,
-        //че ще има само една компания        
+        CarCompany& operator=(const CarCompany&);        
 
         ~CarCompany();
 };

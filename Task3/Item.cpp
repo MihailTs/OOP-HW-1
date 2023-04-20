@@ -1,4 +1,3 @@
-#pragma once
 #include "Item.h"
 #include <cstring>
 
@@ -46,4 +45,9 @@ Item& Item::operator=(const Item& i){
 
 Item::~Item(){
     delete []name;
+}
+
+std::ostream& operator<<(std::ostream& out, const Item& i){
+    out << i.getName() << "   " << i.getCount();
+    return out;
 }

@@ -1,10 +1,19 @@
 #include "Store.h"
 #include <cstring>
+#include <ostream>
 
 Store::Store(){
     items = new Item[1];
     setItemsCount(0);
     setItemsCapacity(1);
+}
+
+Store::Store(const Store& s){
+    items = new Item[s.getItemsCount()];
+    for(int i = 0; i < s.getItemsCount(); i++)
+        items[i] = s.getItems()[i];
+    setItemsCount(s.getItemsCount());
+    setItemsCapacity(s.getItemsCapacity());
 }
 
 void Store::setItemsCount(unsigned cnt){
@@ -83,8 +92,22 @@ void Store::add(const Item& it){
         setItemsCount(getItemsCount()+1);
 }
 
+Store& Store::operator=(const Store& s){
+    if(this == &s) return *this;
+    delete []getItems();
+    for(int i = 0; i < s.getItemsCount(); i++)
+        items[i] = s.getItems()[i];
+    setItemsCount(s.getItemsCount());
+    setItemsCapacity(s.getItemsCapacity());
+    return *this;
+}
 
-//operator<<
+
+std::ostream& operator<<(std::ostream& out, const Store& s){
+    for(int i = 0; i < s.getItemsCount(); i++)
+        out << s.getItems()[i];
+    return out;
+}
 
 
 Store Store::operator+(const Store& store){
