@@ -26,17 +26,7 @@ void CarCompany::setClientsCapacity(unsigned cap){
 }
 
 CarCompany::CarCompany(const CarCompany& carComp){
-    setCarCount(carComp.getCarCount());
-    setCarsCapacity(carComp.getCarsCapacity());
-    cars = new Car[getCarsCapacity()];
-    for(int i = 0; i < getCarCount(); i++)
-        cars[i] = carComp.getCars()[i];
-
-    setClientCount(carComp.getClientCount());
-    setClientsCapacity(carComp.getClientsCapacity());
-    clients = new Client[getClientsCapacity()];
-    for(int i = 0; i < getClientCount(); i++)
-        clients[i] = carComp.getClients()[i];
+    copy(carComp);
 }
 
 CarCompany::CarCompany(){
@@ -153,7 +143,32 @@ void CarCompany::rentCar(int clientID, int carID){
     getClients()[findClient(clientID)].rent(carID, getCars(), getCarCount());
 }
 
+CarCompany& CarCompany::operator=(const CarCompany& carComp){
+    if(this == &carComp) return *this;
+    
+    delete []getCars();
+    delete []getClients();
+
+    copy(carComp);
+
+    return *this;
+}
+
 CarCompany::~CarCompany(){
     delete []clients;
     delete []cars;
+}
+
+void CarCompany::copy(const CarCompany& carComp){
+    setCarCount(carComp.getCarCount());
+    setCarsCapacity(carComp.getCarsCapacity());
+    cars = new Car[getCarsCapacity()];
+    for(int i = 0; i < getCarCount(); i++)
+        cars[i] = carComp.getCars()[i];
+
+    setClientCount(carComp.getClientCount());
+    setClientsCapacity(carComp.getClientsCapacity());
+    clients = new Client[getClientsCapacity()];
+    for(int i = 0; i < getClientCount(); i++)
+        clients[i] = carComp.getClients()[i];
 }
